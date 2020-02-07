@@ -1,6 +1,6 @@
 var config = {
     width:30,
-    height:25,
+    height:30,
     followingFrames:[{
         x:16, y:11
     },{

@@ -3,7 +3,7 @@ var timesBigger = 9; // Very approximately accurate.
 
 var config = {
     width:320,
-    height:229,
+    height:320,
     followingFrames:parrotConfig.followingFrames.map(frame => {
         return {
             x: frame.x * timesBigger,
