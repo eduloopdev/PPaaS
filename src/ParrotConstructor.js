@@ -15,8 +15,9 @@ ParrotConstructor.prototype.start = function(writeStream, configuration) {
     this.encoder.createReadStream().pipe(writeStream);
     this.encoder.start();
     this.encoder.setTransparent("#000000");
-    this.encoder.setRepeat(0);
-    this.encoder.setDelay(configuration.delay || 40);
+    this.encoder.setRepeat(config.REPEAT);
+    this.encoder.setQuality(10);
+    this.encoder.setDelay(40);
     this.numberOfLoops = Math.ceil((configuration.colors ? configuration.colors.length : 1) / this.parrotConfig.getNumberOfFrames());
     this.colors = configuration.colors;
 }
@@ -87,10 +88,10 @@ ParrotConstructor.prototype.addFollowingOverlayImage = function(overlay, offsetX
             let shouldFlipX = frame.flipX ? !flipX : flipX;
             let shouldFlipY = frame.flipY ? !flipY : flipY;
 
-            handler.addResizedImage(image, 
-                                    flipPositionIfActivated(frame.x, imageWidth, shouldFlipY) + (offsetX || 0), 
-                                    flipPositionIfActivated(frame.y, imageHeight, shouldFlipX) + (offsetY || 0), 
-                                    flipSizeIfActivated(imageWidth, shouldFlipY), 
+            handler.addResizedImage(image,
+                                    flipPositionIfActivated(frame.x, imageWidth, shouldFlipY) + (offsetX || 0),
+                                    flipPositionIfActivated(frame.y, imageHeight, shouldFlipX) + (offsetY || 0),
+                                    flipSizeIfActivated(imageWidth, shouldFlipY),
                                     flipSizeIfActivated(imageHeight, shouldFlipX));
         }
 
